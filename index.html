@@ -3,399 +3,455 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Dev Briefs — Backend Developer News</title>
+  <title>AI Dev Briefs — The Developer Front Page</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --ink: #111;
+      --muted: #646464;
+      --paper: #fbfaf7;
+      --line: #171717;
+      --hair: #d8d3c8;
+      --wash: #f2efe8;
+      --accent: #8b1e1e;
+      --blue: #143f6b;
     }
+
+    * { box-sizing: border-box; }
 
     body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
       font-family: Georgia, "Times New Roman", Times, serif;
-      background: #ffffff;
-      color: #1a1a1a;
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
-    /* Header / Masthead */
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+
+    .page {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 18px 18px 56px;
+    }
+
+    .top-rule,
+    .bottom-rule {
+      border-top: 4px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      height: 8px;
+    }
+
     .masthead {
-      border-bottom: 2px solid #1a1a1a;
-      padding: 32px 0;
-      margin-bottom: 40px;
+      padding: 18px 0 14px;
+      text-align: center;
+      border-bottom: 3px double var(--line);
     }
 
-    .masthead-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .publication-name {
-      font-size: 56px;
-      font-weight: 700;
-      letter-spacing: -0.8px;
-      margin-bottom: 4px;
-      font-family: "Times New Roman", Georgia, serif;
-    }
-
-    .publication-tagline {
-      font-size: 14px;
-      color: #666;
-      letter-spacing: 0.05em;
+    .edition-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font: 12px/1.2 Arial, Helvetica, sans-serif;
+      color: var(--muted);
       text-transform: uppercase;
-      font-weight: 500;
-    }
-
-    /* Grid Layout */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px 60px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 40px;
-      margin-bottom: 60px;
-    }
-
-    .grid-full {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
-
-    /* Featured Story (Top Left) */
-    .featured {
-      border: 1px solid #e0e0e0;
-      padding: 20px;
-      background: #fafafa;
-    }
-
-    .featured-label {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #666;
+      letter-spacing: .08em;
       margin-bottom: 8px;
-      font-weight: 600;
     }
 
-    .featured-headline {
-      font-size: 38px;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 12px;
+    .name {
+      font-size: clamp(44px, 8vw, 92px);
+      line-height: .9;
+      letter-spacing: -0.05em;
+      font-weight: 900;
     }
 
-    .featured-summary {
-      font-size: 16px;
-      line-height: 1.6;
+    .tagline {
+      margin-top: 10px;
+      font: 13px/1.4 Arial, Helvetica, sans-serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
       color: #333;
-      margin-bottom: 16px;
     }
 
-    .featured-meta {
-      font-size: 12px;
-      color: #888;
+    .ticker {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      border-bottom: 1px solid var(--line);
+      border-top: 1px solid var(--line);
+      margin: 14px 0 22px;
+      min-height: 38px;
+      align-items: stretch;
     }
 
-    .featured-link {
-      display: inline-block;
-      margin-top: 16px;
-      padding: 10px 0;
-      font-size: 13px;
-      font-weight: 600;
+    .ticker-label {
+      background: var(--ink);
+      color: var(--paper);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font: 12px Arial, Helvetica, sans-serif;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #1a1a1a;
-      text-decoration: none;
-      border-bottom: 2px solid #1a1a1a;
-      transition: all 0.2s;
     }
 
-    .featured-link:hover {
-      padding-left: 4px;
+    .ticker-items {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      overflow-x: auto;
+      padding: 0 14px;
+      white-space: nowrap;
+      font-size: 14px;
     }
 
-    /* Sidebar (Top Right) */
-    .sidebar-section {
-      margin-bottom: 40px;
+    .nav {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--line);
+      margin-bottom: 26px;
     }
 
-    .sidebar-title {
-      font-size: 13px;
+    .nav a {
+      background: var(--paper);
+      padding: 12px 10px;
+      text-align: center;
+      font: 12px Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: #222;
+    }
+
+    .front {
+      display: grid;
+      grid-template-columns: 1.35fr .8fr .8fr;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 36px;
+    }
+
+    .lead {
+      padding-right: 24px;
+      border-right: 1px solid var(--hair);
+    }
+
+    .eyebrow {
+      font: 11px Arial, Helvetica, sans-serif;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
       font-weight: 700;
-      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .lead h1 {
+      margin: 0;
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: .95;
+      letter-spacing: -0.035em;
+    }
+
+    .dek {
+      margin: 16px 0 18px;
+      font-size: 20px;
+      color: #2b2b2b;
+    }
+
+    .readline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 8px 0;
+      font: 12px Arial, Helvetica, sans-serif;
       text-transform: uppercase;
-      color: #1a1a1a;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #e0e0e0;
+      letter-spacing: .12em;
+      color: var(--ink);
     }
 
-    .brief-item {
-      margin-bottom: 16px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid #e0e0e0;
+    .column-stack {
+      display: grid;
+      gap: 18px;
     }
 
-    .brief-item:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
+    .story {
+      border-top: 2px solid var(--line);
+      padding-top: 12px;
     }
 
-    .brief-title {
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 1.4;
-      margin-bottom: 6px;
+    .story h2 {
+      font-size: 25px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+    }
+
+    .story p {
+      margin: 0 0 10px;
+      color: #3a3a3a;
+      font-size: 15px;
+    }
+
+    .meta {
+      font: 11px Arial, Helvetica, sans-serif;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .brief-box {
+      background: var(--wash);
+      border: 1px solid var(--hair);
+      padding: 16px;
+    }
+
+    .brief-box h3 {
+      margin: 0 0 12px;
+      font: 13px Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .12em;
     }
 
     .brief-link {
-      font-size: 12px;
-      color: #0066cc;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .brief-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Topics Grid */
-    .topics-section {
-      margin-bottom: 60px;
+      display: block;
+      padding: 11px 0;
+      border-top: 1px solid var(--hair);
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 700;
     }
 
     .section-title {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid #1a1a1a;
-    }
-
-    .topic-card {
-      border: 1px solid #e0e0e0;
-      padding: 24px;
-      background: #fff;
-      transition: all 0.2s;
-      cursor: pointer;
-    }
-
-    .topic-card:hover {
-      border-color: #1a1a1a;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .topic-label {
-      font-size: 11px;
-      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 34px 0 18px;
+      font: 13px Arial, Helvetica, sans-serif;
       text-transform: uppercase;
-      color: #999;
-      margin-bottom: 8px;
-      font-weight: 600;
+      letter-spacing: .14em;
+      color: #222;
     }
 
-    .topic-name {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 8px;
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      height: 1px;
+      background: var(--line);
+      flex: 1;
     }
 
-    .topic-count {
-      font-size: 13px;
-      color: #666;
-    }
-
-    .topic-card a {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Footer */
-    .footer {
-      border-top: 2px solid #1a1a1a;
-      padding: 32px 0;
-      margin-top: 60px;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+    .sections {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 40px;
-      font-size: 13px;
-      color: #666;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
     }
 
-    .footer-col h3 {
-      font-size: 13px;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 12px;
-      letter-spacing: 0.05em;
+    .section-card {
+      min-height: 170px;
+      padding: 18px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.35);
+    }
+
+    .section-card:hover { background: #fff; }
+
+    .section-card .num {
+      font: 12px Arial, Helvetica, sans-serif;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .section-card h3 {
+      font-size: 24px;
+      line-height: 1;
+      margin: 0 0 10px;
+    }
+
+    .section-card p {
+      margin: 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .all-briefs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--hair);
+      border-left: 1px solid var(--hair);
+    }
+
+    .mini {
+      padding: 18px;
+      border-right: 1px solid var(--hair);
+      border-bottom: 1px solid var(--hair);
+      background: #fffdf8;
+    }
+
+    .mini h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      line-height: 1.1;
+    }
+
+    .mini p {
+      margin: 0 0 14px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .footer {
+      margin-top: 44px;
+      border-top: 3px double var(--line);
+      padding: 18px 0 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font: 12px Arial, Helvetica, sans-serif;
+      color: var(--muted);
       text-transform: uppercase;
+      letter-spacing: .08em;
     }
 
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col li {
-      margin-bottom: 8px;
-    }
-
-    .footer-col a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-
-    .footer-col a:hover {
-      text-decoration: underline;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .grid-full {
-        grid-template-columns: 1fr;
-      }
-
-      .publication-name {
-        font-size: 36px;
-      }
-
-      .featured-headline {
-        font-size: 24px;
-      }
-
-      .footer-inner {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 900px) {
+      .front { grid-template-columns: 1fr; }
+      .lead { border-right: 0; padding-right: 0; }
+      .sections { grid-template-columns: repeat(2, 1fr); }
+      .all-briefs { grid-template-columns: 1fr; }
+      .nav { grid-template-columns: 1fr 1fr; }
+      .ticker { grid-template-columns: 1fr; }
+      .ticker-label { padding: 8px; }
+      .footer { flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <!-- Masthead -->
-  <header class="masthead">
-    <div class="masthead-inner">
-      <div class="publication-name">AI Dev Briefs</div>
-      <div class="publication-tagline">Developer News for Builders, Engineers, and Product Teams</div>
-    </div>
-  </header>
+  <div class="page">
+    <div class="top-rule"></div>
 
-  <!-- Main Container -->
-  <main class="container">
-    <!-- Featured Story + Sidebar -->
-    <section class="grid">
-      <!-- Left: Featured -->
-      <article class="featured">
-        <div class="featured-label">Latest</div>
-        <h1 class="featured-headline">AI Engineering Security Is Becoming Zero-Trust by Default Across Dev Teams</h1>
-        <p class="featured-summary">
-          Current security guidance is converging around a simple truth: autonomous agents must be treated like high-privilege machine identities, not friendly chatbots.
-        </p>
-        <div class="featured-meta">Evening Edition • 2026-04-30</div>
-        <a href="./articles/backend-agent-security-2026-04-30.html" class="featured-link">Read Brief →</a>
+    <header class="masthead">
+      <div class="edition-row">
+        <span>Morning & Evening Editions</span>
+        <span>Asia/Colombo</span>
+        <span>Vol. 01</span>
+      </div>
+      <div class="name">The Dev Brief</div>
+      <div class="tagline">A daily front page for builders watching the future of software</div>
+    </header>
+
+    <div class="ticker">
+      <div class="ticker-label">Today</div>
+      <div class="ticker-items">
+        <span>Claude Code release cadence</span>
+        <span>Codex workflow automation</span>
+        <span>Agent security</span>
+        <span>MCP infrastructure</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="./archive.html">Archive</a>
+      <a href="./topics/claude-code.html">Claude Code</a>
+      <a href="./topics/codex.html">Codex</a>
+      <a href="./topics/security.html">Security</a>
+      <a href="./feed.json">Feed</a>
+    </nav>
+
+    <main class="front">
+      <article class="lead">
+        <div class="eyebrow">Front Page</div>
+        <a href="./articles/backend-agent-security-2026-04-30.html">
+          <h1>AI Agent Security Is Becoming Zero-Trust by Default Across Dev Teams</h1>
+          <p class="dek">Autonomous agents are no longer harmless helpers. They are becoming machine identities with tools, memory, and production reach.</p>
+          <span class="readline">Open briefing →</span>
+        </a>
       </article>
 
-      <!-- Right: Sidebar -->
-      <aside>
-        <div class="sidebar-section">
-          <h2 class="sidebar-title">Recent Briefs</h2>
-          <div class="brief-item">
-            <div class="brief-title">Claude Code Release Notes Keep Prioritizing Practical Developer Fixes</div>
-            <a href="./articles/claude-code-release-notes-2026-04-30.html" class="brief-link">Read →</a>
-          </div>
-          <div class="brief-item">
-            <div class="brief-title">Codex Is Moving Toward Full Developer Workflow Automation</div>
-            <a href="./articles/codex-agent-workflows-2026-04-30.html" class="brief-link">Read →</a>
-          </div>
-          <div class="brief-item">
-            <div class="brief-title">MCP Roadmap Signals Production-Grade Agent Infrastructure</div>
-            <a href="./articles/mcp-update.html" class="brief-link">Read →</a>
-          </div>
-        </div>
+      <div class="column-stack">
+        <article class="story">
+          <a href="./articles/claude-code-release-notes-2026-04-30.html">
+            <div class="eyebrow">Tools</div>
+            <h2>Claude Code Keeps Prioritizing Practical Developer Fixes</h2>
+            <p>Release notes show steady work on CLI reliability, MCP flow, effort controls, and real-world developer edges.</p>
+            <div class="meta">4 min read</div>
+          </a>
+        </article>
+        <article class="story">
+          <a href="./articles/codex-agent-workflows-2026-04-30.html">
+            <div class="eyebrow">Agents</div>
+            <h2>Codex Moves Toward Full Developer Workflow Automation</h2>
+            <p>The pattern is shifting from code suggestions to orchestration across planning, implementation, and review.</p>
+            <div class="meta">3 min read</div>
+          </a>
+        </article>
+      </div>
 
-        <div class="sidebar-section">
-          <h2 class="sidebar-title">About</h2>
-          <p style="font-size: 13px; line-height: 1.6; color: #666;">
-            Fresh briefs on developer tools, coding agents, AI platforms, and engineering workflows. 
-            Delivered daily at 09:00 and 20:00 (Asia/Colombo).
-          </p>
-        </div>
+      <aside class="brief-box">
+        <h3>Editor’s Lineup</h3>
+        <a class="brief-link" href="./articles/mcp-update.html">MCP roadmap turns into production infrastructure</a>
+        <a class="brief-link" href="./articles/claude-code-update.html">Claude Code OAuth reliability edge case</a>
+        <a class="brief-link" href="./articles/codex-update.html">Codex strengthens agent workflows</a>
       </aside>
+    </main>
+
+    <div class="section-title">Sections</div>
+    <section class="sections">
+      <a class="section-card" href="./topics/claude-code.html">
+        <div class="num">01</div>
+        <h3>Claude Code</h3>
+        <p>Terminal agents, release notes, workflows, and quality fixes.</p>
+      </a>
+      <a class="section-card" href="./topics/codex.html">
+        <div class="num">02</div>
+        <h3>Codex</h3>
+        <p>OpenAI coding workflows, automation, agents, and tool integrations.</p>
+      </a>
+      <a class="section-card" href="./topics/security.html">
+        <div class="num">03</div>
+        <h3>Security</h3>
+        <p>Prompt injection, permissions, audits, and production guardrails.</p>
+      </a>
+      <a class="section-card" href="./archive.html">
+        <div class="num">04</div>
+        <h3>Archive</h3>
+        <p>Permanent brief history, organized by date and topic.</p>
+      </a>
     </section>
 
-    <!-- Topics Section -->
-    <section class="topics-section">
-      <h2 class="section-title">Sections</h2>
-      <div class="grid-full">
-        <article class="topic-card">
-          <a href="./topics/claude-code.html">
-            <div class="topic-label">Topic</div>
-            <div class="topic-name">Claude Code</div>
-            <div class="topic-count">8 briefs</div>
-          </a>
-        </article>
-        <article class="topic-card">
-          <a href="./topics/codex.html">
-            <div class="topic-label">Topic</div>
-            <div class="topic-name">OpenAI Codex</div>
-            <div class="topic-count">6 briefs</div>
-          </a>
-        </article>
-        <article class="topic-card">
-          <a href="./topics/security.html">
-            <div class="topic-label">Topic</div>
-            <div class="topic-name">Engineering Security</div>
-            <div class="topic-count">5 briefs</div>
-          </a>
-        </article>
-      </div>
+    <div class="section-title">Latest Briefs</div>
+    <section class="all-briefs">
+      <article class="mini">
+        <a href="./articles/backend-agent-security-2026-04-30.html">
+          <h3>Backend AI Agent Security Is Becoming Zero-Trust by Default</h3>
+          <p>Why agent permissions now need identity-first controls.</p>
+          <div class="meta">Security</div>
+        </a>
+      </article>
+      <article class="mini">
+        <a href="./articles/codex-agent-workflows-2026-04-30.html">
+          <h3>Codex Is Moving Toward Full Developer Workflow Automation</h3>
+          <p>How agent workflows move beyond autocomplete.</p>
+          <div class="meta">Codex</div>
+        </a>
+      </article>
+      <article class="mini">
+        <a href="./articles/claude-code-release-notes-2026-04-30.html">
+          <h3>Claude Code Release Notes Keep Prioritizing Practical Developer Fixes</h3>
+          <p>CLI reliability, MCP handling, and workflow polish.</p>
+          <div class="meta">Claude Code</div>
+        </a>
+      </article>
     </section>
-  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-col">
-        <h3>Briefs</h3>
-        <ul>
-          <li><a href="#claude-code">Claude Code</a></li>
-          <li><a href="#codex">Codex</a></li>
-          <li><a href="#agents">AI Agents</a></li>
-          <li><a href="#security">Security</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3>Updates</h3>
-        <ul>
-          <li><a href="https://t.me/updateyoubot">Telegram</a></li>
-          <li>Morning & Evening Editions • Asia/Colombo</li>
-          <li><a href="https://github.com/xbuddhi/ai-dev-briefs">GitHub Repo</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3>More</h3>
-        <ul>
-          <li><a href="./feed.json">JSON Feed</a></li>
-          <li><a href="./archive.html">Archive</a></li>
-          <li>© 2026</li>
-        </ul>
-      </div>
-    </div>
-  </footer>
+    <footer class="footer">
+      <span>The Dev Brief</span>
+      <span>Daily at 09:00 & 20:00</span>
+      <span><a href="https://github.com/xbuddhi/ai-dev-briefs">GitHub</a></span>
+    </footer>
+  </div>
 </body>
 </html>
