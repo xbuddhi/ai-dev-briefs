@@ -1,1 +1,208 @@
-<!doctype html><meta charset="utf-8"><title>Archive — AI Dev Briefs</title><h1>Archive</h1><ul><li><a href="./articles/backend-agent-security-2026-04-30.html">Backend AI Agent Security Is Becoming Zero-Trust by Default</a></li><li><a href="./articles/codex-agent-workflows-2026-04-30.html">Codex Is Moving Toward Full Developer Workflow Automation</a></li><li><a href="./articles/claude-code-release-notes-2026-04-30.html">Claude Code Release Notes Keep Prioritizing Practical Developer Fixes</a></li></ul>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Archive — The Dev Brief</title>
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --muted: #6b7280;
+      --paper: #fefdfb;
+      --line: #e5e0d5;
+      --light-line: #f0ebe0;
+      --accent: #c7382d;
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, var(--paper), #faf7f2);
+      color: var(--ink);
+      font-family: Georgia, "Book Antiqua", serif;
+      line-height: 1.65;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+    }
+
+    a { color: inherit; text-decoration: none; transition: all .25s ease; }
+    a:hover { color: var(--accent); }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 24px 5rem;
+    }
+
+    .back-nav {
+      margin-bottom: 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font: 11px Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--muted);
+    }
+
+    .back-nav:hover { color: var(--accent); }
+
+    .masthead {
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .label {
+      font: 12px Arial, sans-serif;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 64px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .desc {
+      margin-top: 1.2rem;
+      font-size: 17px;
+      color: #666;
+      max-width: 650px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1.6rem;
+    }
+
+    .entry {
+      border-top: 1px solid var(--light-line);
+      padding-top: 1.5rem;
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .entry:first-of-type { border-top: none; padding-top: 0; }
+
+    .date {
+      font: 12px Arial, sans-serif;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding-top: .3rem;
+    }
+
+    .entry h2 {
+      margin: 0 0 .7rem;
+      font-size: 30px;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+    }
+
+    .entry p {
+      margin: 0 0 .9rem;
+      color: #555;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .read-link {
+      display: inline-block;
+      margin-top: .3rem;
+      padding: 8px 0;
+      border-bottom: 2px solid var(--ink);
+      font: 12px Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 600;
+    }
+
+    .read-link:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+    .footer {
+      margin-top: 3rem;
+      border-top: 2px solid var(--ink);
+      padding-top: 1.5rem;
+      text-align: center;
+      font: 12px Arial, sans-serif;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .footer a { color: var(--accent); }
+    .footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 760px) {
+      .entry { grid-template-columns: 1fr; gap: .4rem; }
+      .date { padding-top: 0; }
+      .entry h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a href="./?v=20260430-1355" class="back-nav">← Back to homepage</a>
+
+    <header class="masthead">
+      <div class="label">Archive</div>
+      <h1>All Published Briefs</h1>
+      <p class="desc">A chronological record of developer briefings across tools, agent workflows, protocol shifts, and security guardrails.</p>
+    </header>
+
+    <section class="timeline">
+      <article class="entry">
+        <div class="date">30 Apr 2026</div>
+        <div>
+          <h2><a href="./articles/backend-agent-security-2026-04-30.html?v=20260430-1355">Backend AI Agent Security Is Becoming Zero-Trust by Default</a></h2>
+          <p>Why autonomous agents now require identity-first controls, permission gates, and strict audit trails.</p>
+          <a class="read-link" href="./articles/backend-agent-security-2026-04-30.html?v=20260430-1355">Open brief →</a>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="date">30 Apr 2026</div>
+        <div>
+          <h2><a href="./articles/codex-agent-workflows-2026-04-30.html?v=20260430-1355">Codex Is Moving Toward Full Developer Workflow Automation</a></h2>
+          <p>How coding workflows are shifting from autocomplete to orchestrated plan-implement-review loops.</p>
+          <a class="read-link" href="./articles/codex-agent-workflows-2026-04-30.html?v=20260430-1355">Open brief →</a>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="date">30 Apr 2026</div>
+        <div>
+          <h2><a href="./articles/claude-code-release-notes-2026-04-30.html?v=20260430-1355">Claude Code Release Notes Keep Prioritizing Practical Developer Fixes</a></h2>
+          <p>Steady release improvements focused on reliability, effort controls, and better real-world terminal workflows.</p>
+          <a class="read-link" href="./articles/claude-code-release-notes-2026-04-30.html?v=20260430-1355">Open brief →</a>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="date">30 Apr 2026</div>
+        <div>
+          <h2><a href="./articles/mcp-update.html?v=20260430-1355">MCP 2026 Roadmap Shifts Focus to Scale and Enterprise Reliability</a></h2>
+          <p>Transport scalability, task lifecycle semantics, and governance become central for production agent infrastructure.</p>
+          <a class="read-link" href="./articles/mcp-update.html?v=20260430-1355">Open brief →</a>
+        </div>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <a href="./?v=20260430-1355">← Return to The Dev Brief</a>
+    </footer>
+  </div>
+</body>
+</html>
