@@ -1,15 +1,400 @@
-<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>AI Dev Briefs</title>
-<style>body{font-family:Arial,sans-serif;max-width:860px;margin:40px auto;padding:0 16px;line-height:1.6}a{color:#0a4ea3}li{margin:10px 0}</style></head><body>
-<h1>AI Developer Briefs</h1>
-<p>Readable daily briefs.</p>
-<ul>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Dev Briefs — Backend Developer News</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<li><a href='./claude-code-release-notes-2026-04-30.html'>Claude Code Release Notes Keep Prioritizing Practical Developer Fixes</a></li>
-<li><a href='./codex-agent-workflows-2026-04-30.html'>Codex Is Moving Toward Full Developer Workflow Automation</a></li>
-<li><a href='./backend-agent-security-2026-04-30.html'>Backend AI Agent Security Is Becoming Zero-Trust by Default</a></li>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
 
-<li><a href='./claude-code-update.html'>Claude Code v2.1.123 Targets OAuth Reliability Edge Case</a></li>
-<li><a href='./codex-update.html'>OpenAI Codex Adds Stronger Agent Workflows in April 2026</a></li>
-<li><a href='./mcp-update.html'>MCP 2026 Roadmap Shifts Focus to Scale and Enterprise Reliability</a></li>
-</ul>
-</body></html>
+    /* Header / Masthead */
+    .masthead {
+      border-bottom: 2px solid #1a1a1a;
+      padding: 32px 0;
+      margin-bottom: 40px;
+    }
+
+    .masthead-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .publication-name {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 4px;
+    }
+
+    .publication-tagline {
+      font-size: 14px;
+      color: #666;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* Grid Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .grid-full {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    /* Featured Story (Top Left) */
+    .featured {
+      border: 1px solid #e0e0e0;
+      padding: 20px;
+      background: #fafafa;
+    }
+
+    .featured-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .featured-headline {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .featured-summary {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 16px;
+    }
+
+    .featured-meta {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .featured-link {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 10px 0;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #1a1a1a;
+      text-decoration: none;
+      border-bottom: 2px solid #1a1a1a;
+      transition: all 0.2s;
+    }
+
+    .featured-link:hover {
+      padding-left: 4px;
+    }
+
+    /* Sidebar (Top Right) */
+    .sidebar-section {
+      margin-bottom: 40px;
+    }
+
+    .sidebar-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .brief-item {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .brief-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .brief-title {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .brief-link {
+      font-size: 12px;
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .brief-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Topics Grid */
+    .topics-section {
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #1a1a1a;
+    }
+
+    .topic-card {
+      border: 1px solid #e0e0e0;
+      padding: 24px;
+      background: #fff;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .topic-card:hover {
+      border-color: #1a1a1a;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .topic-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .topic-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .topic-count {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .topic-card a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 2px solid #1a1a1a;
+      padding: 32px 0;
+      margin-top: 60px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .footer-col h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .footer-col a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-full {
+        grid-template-columns: 1fr;
+      }
+
+      .publication-name {
+        font-size: 36px;
+      }
+
+      .featured-headline {
+        font-size: 24px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="publication-name">AI Dev Briefs</div>
+      <div class="publication-tagline">Backend Developer News for Practical Builders</div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+    <!-- Featured Story + Sidebar -->
+    <section class="grid">
+      <!-- Left: Featured -->
+      <article class="featured">
+        <div class="featured-label">Latest</div>
+        <h1 class="featured-headline">Backend AI Agent Security Is Becoming Zero-Trust by Default</h1>
+        <p class="featured-summary">
+          Current security guidance is converging around a simple truth: autonomous agents must be treated like high-privilege machine identities, not friendly chatbots.
+        </p>
+        <div class="featured-meta">Published: 2026-04-30</div>
+        <a href="./articles/backend-agent-security-2026-04-30.html" class="featured-link">Read Brief →</a>
+      </article>
+
+      <!-- Right: Sidebar -->
+      <aside>
+        <div class="sidebar-section">
+          <h2 class="sidebar-title">Recent Briefs</h2>
+          <div class="brief-item">
+            <div class="brief-title">Claude Code Release Notes Keep Prioritizing Practical Developer Fixes</div>
+            <a href="./articles/claude-code-release-notes-2026-04-30.html" class="brief-link">Read →</a>
+          </div>
+          <div class="brief-item">
+            <div class="brief-title">Codex Is Moving Toward Full Developer Workflow Automation</div>
+            <a href="./articles/codex-agent-workflows-2026-04-30.html" class="brief-link">Read →</a>
+          </div>
+          <div class="brief-item">
+            <div class="brief-title">MCP Roadmap Signals Production-Grade Agent Infrastructure</div>
+            <a href="./articles/mcp-update.html" class="brief-link">Read →</a>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h2 class="sidebar-title">About</h2>
+          <p style="font-size: 13px; line-height: 1.6; color: #666;">
+            Fresh briefs on Claude Code, Codex, AI agents, and backend infrastructure. 
+            Delivered daily at 09:00 and 20:00 (Asia/Colombo).
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Topics Section -->
+    <section class="topics-section">
+      <h2 class="section-title">Browse by Topic</h2>
+      <div class="grid-full">
+        <article class="topic-card">
+          <a href="./topics/claude-code.html">
+            <div class="topic-label">Topic</div>
+            <div class="topic-name">Claude Code</div>
+            <div class="topic-count">8 briefs</div>
+          </a>
+        </article>
+        <article class="topic-card">
+          <a href="./topics/codex.html">
+            <div class="topic-label">Topic</div>
+            <div class="topic-name">OpenAI Codex</div>
+            <div class="topic-count">6 briefs</div>
+          </a>
+        </article>
+        <article class="topic-card">
+          <a href="./topics/security.html">
+            <div class="topic-label">Topic</div>
+            <div class="topic-name">Agent Security</div>
+            <div class="topic-count">5 briefs</div>
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>Briefs</h3>
+        <ul>
+          <li><a href="#claude-code">Claude Code</a></li>
+          <li><a href="#codex">Codex</a></li>
+          <li><a href="#agents">AI Agents</a></li>
+          <li><a href="#security">Security</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Updates</h3>
+        <ul>
+          <li><a href="https://t.me/updateyoubot">Telegram</a></li>
+          <li>09:00 & 20:00 UTC+5:30</li>
+          <li><a href="https://github.com/xbuddhi/ai-dev-briefs">GitHub Repo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>More</h3>
+        <ul>
+          <li><a href="./feed.json">JSON Feed</a></li>
+          <li><a href="./archive.html">Archive</a></li>
+          <li>© 2026</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
